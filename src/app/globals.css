@@ -2,32 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: white;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.auth-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+.auth-bg-container{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.auth-content{
+  margin-left: 3vw;
+  margin-right: 3vw;
+  position: relative;
+}
+
+.auth-sub-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 3vw;
+  margin-right: 3vw;
+}
+
+.auth-button{
+  border-radius: 3px;
+  color: white;
+  background-color: #063970;
+  width: 15vw;
+  height: 4vh;
+  margin: 1vh;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.auth-switch-btn{
+  color: #063970;
+  font-weight: 900;
+  text-decoration: underline;
+  padding-left: 1vw;
+}
+
+.auth-form-input{
+  border-radius: 3px;
+  width: 15vw;
+  height: 4vh;
+  background-color: #E5E5E5;
+  margin: 0.5vh;
+  padding: 0.5vw;
+  outline: none;
+}
+
+.auth-form-input:focus {
+  box-shadow: 0 0 5px rgba(6, 57, 112, 0.7);
+}
+
+.auth-title{
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 2vh;
+}
+
+.auth-parah{
+  font-size: 25px;
+  text-align: start;
+  width: 25vw;
+  margin-bottom: 2vh;
+}
+
+.auth-switch{
+  font-size: 20px;
+  text-align: center;
+}
+
+.auth-gender{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.gender-title{
+  font-weight: 700;
+}
+
+.gender-radio{
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
