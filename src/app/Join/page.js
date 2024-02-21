@@ -1,5 +1,6 @@
 "use client"
 import { useState } from 'react';
+import axios from 'axios';
 import Image from 'next/image';
 
 
@@ -13,6 +14,17 @@ export default function Join(){
         password: '',
         confirmPassword: '',
     });
+    const [message, setMessage] = useState(
+      { text: '', 
+      color: '' 
+    });
+
+    const showMessage = (text, color) => {
+      setMessage({ text, color });
+      setTimeout(() => {
+          setMessage({ text: '', color: '' });
+      }, 2500); 
+    };
 
     const switchView = () => {
         setLoginView((prev) => !prev);
@@ -32,54 +44,44 @@ export default function Join(){
     const handleAuthAction = async () => {
         try {
           if (isLoginView) {
-            const response = await fetch('http://127.0.0.1:8080/api/login', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                email: formData.email,
-                password: formData.password,
-              }),
-            });
-    
-            if (response.ok) {
-              console.log('Login successful');
-              alert('Login successful');
-            } else {
-              console.error('Login failed');
-              alert('Login failed');
+            if (!formData.email || !formData.password) {
+              showMessage('Please provide valid email & password', 'red');
+              return;
             }
+            try {
+              const response = await axios.post('http://127.0.0.1:8080/api/login', {
+                  email: formData.email,
+                  password: formData.password,
+              });
+              console.log(response,'response');
+              showMessage('Login successful', 'green');
+            }catch (error) {
+              console.error('Error:', error);
+              showMessage(`${response.response.data.message}`, 'red');
+          }
           } else {
-            const response = await fetch('http://127.0.0.1:8080/api/signup', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                name: formData.name,
-                email: formData.email,
-                gender: selectedGender,
-                password: formData.password,
-                confirmPassword: formData.confirmPassword,
-              }),
-            });
-    
-            if (response.ok) {
-              console.log('Signup successful');
-              alert('Signup successful');
-            } else {
-              console.error('Signup failed');
-              alert('Signup failed');
+            if (!formData.email || !formData.password || !formData.name || !formData.confirmPassword || !selectedGender) {
+              showMessage('Please fill the complete form for Signup', 'red');
+              return;
+            }
+            try {
+              const response = await axios.post('http://127.0.0.1:8080/api/signup', {
+                  name: formData.name,
+                  email: formData.email,
+                  gender: selectedGender,
+                  password: formData.password,
+                  confirmPassword: formData.confirmPassword,
+              });
+              console.log(response);
+              showMessage('Signup successful', 'green');
+            } catch (error) {
+              console.log(error.response.data.message,'error')
+              const {errors} = error.response.data.message;
+              Object.values(errors).forEach((error) => {
+                showMessage(error.message, 'red');
+              });
             }
           }
-          setFormData({
-            name: '',
-            email: '',
-            gender: '',
-            password: '',
-            confirmPassword: '',
-          });
         } catch (error) {
           console.error('Error:', error);
         }
@@ -106,6 +108,7 @@ export default function Join(){
                     <Image src={isLoginView ? '/Images/login-boy.png' : '/Images/signup-boy.png'} alt="auth-side-image" width={300} height={200}/>
                 </div>
                 <div className="form-container">
+                    <p style={{ color: message.color }}>{message.text}</p>
                     <input 
                         className="auth-form-input" 
                         placeholder={isLoginView ? 'Enter email' : 'Name'} 
