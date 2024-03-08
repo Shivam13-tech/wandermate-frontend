@@ -88,62 +88,62 @@ export default function Join(){
     };
 
     return(
-        <div className="auth-container">
-           <div className='auth-bg-container'>
+        <div className="flex flex-row md:flex-col justify-center items-center h-[90vh]">
+           <div className='hidden lg:block absolute top-0 left-1/2 transform -translate-x-1/2'>
                <Image src="/Images/auth-bg.png" alt="auth-plane-image" width={500} height={100} />
            </div>
-           <div className="auth-sub-container">
-                <div className='auth-content'>
-                    <h1 className="auth-title">{isLoginView ? 'Login' : 'Sign Up'}</h1>
-                    <p className='auth-parah'>
+           <div className="flex flex-col items-center justify-center lg:flex-row">
+                <div className='mx-[3vw] relative'>
+                    <h1 className="text-center mb-[2vh] sm:text-4xl md:text-6xl lg:text-5xl ">{isLoginView ? 'Login' : 'Sign Up'}</h1>
+                    <p className='sm:text-center md:text-center lg:text-start sm:text-lg md:text-xl lg:text-2xl sm:w-[95vw] md:w-[50vw] lg:w-[25vw] mb-[2vh]'>
                     {isLoginView
                         ? 'Welcome, Enter your credentials and get ready for your awesome travel journey'
                         : 'Join us to be part of an awesome travel family with amazing trips and memories'
                     }</p>
-                    <p className='auth-switch'>
+                    <p className='text-center text-xl'>
                     {isLoginView ? "Don't have an account ?" : 'Already have an account?'}
-                    <button onClick={switchView} className='auth-switch-btn'>{isLoginView ? 'Signup now' : 'Login now'}</button></p>
+                    <button onClick={switchView} className='text-buttonColor font-extrabold underline pl-[1vw]'>{isLoginView ? 'Signup now' : 'Login now'}</button></p>
                 </div>
                 <div>
                     <Image src={isLoginView ? '/Images/login-boy.png' : '/Images/signup-boy.png'} alt="auth-side-image" width={300} height={200}/>
                 </div>
-                <div className="form-container">
+                <div className="flex flex-col items-center justify-center mx-[3vw]">
                     <p style={{ color: message.color }}>{message.text}</p>
                     <input 
-                        className="auth-form-input" 
+                        className="rounded sm:w-[70vw] md:w-[45vw] lg:w-[15vw] sm:h-[5vh] md:h-[5vh] lg:h-[4vh]  sm:m-[0.9vh] lg:m-[0.8vh] lg:m-[0.5vh] sm:p-[1.8vw] lg:p-[0.7vw] lg:p-[0.5vw] bg-inputBoxColor outline-none focus:shadow-outline-blue focus:border-blue-500 focus:ring focus:ring-blue-400" 
                         placeholder={isLoginView ? 'Enter email' : 'Name'} 
                         name={isLoginView ? 'email' : 'name'}
                         type="text" 
                         onChange={handleInputChange}
                     />
                     {!isLoginView && <input 
-                        className="auth-form-input" 
+                        className="rounded sm:w-[70vw] md:w-[45vw] lg:w-[15vw] sm:h-[5vh] md:h-[5vh] lg:h-[4vh] sm:m-[0.9vh] lg:m-[0.8vh] lg:m-[0.5vh] sm:p-[1.8vw] lg:p-[0.7vw] lg:p-[0.5vw] bg-inputBoxColor outline-none focus:shadow-outline-blue focus:border-blue-500 focus:ring focus:ring-blue-400" 
                         name="email"
                         placeholder="Email" 
                         onChange={handleInputChange}
                     />}
                     <input 
-                        className="auth-form-input" 
+                        className="rounded sm:w-[70vw] md:w-[45vw] lg:w-[15vw] sm:h-[5vh] md:h-[5vh] lg:h-[4vh] sm:m-[0.9vh] lg:m-[0.8vh] lg:m-[0.5vh] sm:p-[1.8vw] lg:p-[0.7vw] lg:p-[0.5vw] bg-inputBoxColor outline-none focus:shadow-outline-blue focus:border-blue-500 focus:ring focus:ring-blue-400" 
                         name="password"
                         placeholder="Enter password" 
                         type="password" 
                         onChange={handleInputChange}
                     />
                     {!isLoginView && <input 
-                        className="auth-form-input" 
+                        className="rounded sm:w-[70vw] md:w-[45vw] lg:w-[15vw] sm:h-[5vh] md:h-[5vh] lg:h-[4vh] sm:m-[0.9vh] lg:m-[0.8vh] lg:m-[0.5vh] sm:p-[1.8vw] lg:p-[0.7vw] lg:p-[0.5vw] bg-inputBoxColor outline-none focus:shadow-outline-blue focus:border-blue-500 focus:ring focus:ring-blue-400" 
                         name="confirmPassword"
                         placeholder="Confirm Password" 
                         onChange={handleInputChange}
                     />}
                     {!isLoginView && ( 
-                        <div className="auth-gender">
-                            <p className='gender-title'>Gender</p>
+                        <div className="flex justify-center items-center mt-[1vh] mb-[1vh]">
+                            <p className='font-extrabold'>Gender</p>
                             <label>
                               <input
                                 type="radio"
                                 name="gender"
                                 value="male"
-                                className='gender-radio'
+                                className='mx-[1vw]'
                                 checked={selectedGender === "male"}
                                 onChange={() => handleGenderChange("male")}
                               />
@@ -154,7 +154,7 @@ export default function Join(){
                                 type="radio"
                                 name="gender"
                                 value="female"
-                                className='gender-radio'
+                                className='mx-[1vw]'
                                 checked={selectedGender === "female"}
                                 onChange={() => handleGenderChange("female")}
                               />
@@ -162,7 +162,7 @@ export default function Join(){
                             </label>
                         </div>
                     )}
-                    <button className="auth-button" onClick={handleAuthAction}>{isLoginView ? 'Login' : 'Signup'}</button>
+                    <button className="rounded bg-buttonColor sm:w-[70vw] md:w-[45vw] lg:w-[15vw] sm:h-[5vh] md:h-[5vh] lg:h-[4vh] m-[1vh] text-background shadow-2xl" onClick={handleAuthAction}>{isLoginView ? 'Login' : 'Signup'}</button>
                 </div>
            </div>
         </div>
