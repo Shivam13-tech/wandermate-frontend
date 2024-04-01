@@ -45,10 +45,13 @@ export default function Join() {
           return;
         }
         try {
-          const response = await axios.post("http://127.0.0.1:8080/api/login", {
-            email: formData.email,
-            password: formData.password,
-          });
+          const response = await axios.post(
+            "https://wandermate-backend.onrender.com/api/login",
+            {
+              email: formData.email,
+              password: formData.password,
+            }
+          );
           console.log(response, "response");
           showMessage("Login successful", "green");
         } catch (error) {
@@ -68,7 +71,7 @@ export default function Join() {
         }
         try {
           const response = await axios.post(
-            "http://127.0.0.1:8080/api/signup",
+            "https://wandermate-backend.onrender.com/api/signup",
             {
               name: formData.name,
               email: formData.email,
