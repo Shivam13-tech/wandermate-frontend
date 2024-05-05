@@ -21,7 +21,7 @@ export default function Navbar() {
         <Link className="px-[3vw]" href="/">
           About
         </Link>
-        <Link className="px-[3vw]" href="/">
+        <Link className="px-[3vw] hover:cursor-pointer" href="/Tour">
           Tour
         </Link>
         <Link className="px-[3vw]" href="/">
