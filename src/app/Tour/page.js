@@ -77,11 +77,38 @@ export default function Tour() {
     indexOfLastPost
   );
 
+  const handlepayment = () => {
+    fetch("http://127.0.0.1:8080/api/payment/createcheckout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items: [
+          { id: 1, quantity: 3 },
+          { id: 2, quantity: 1 },
+        ],
+      }),
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
+        return res.json().then((json) => Promise.reject(json));
+      })
+      .then(({ url }) => {
+        window.location = url;
+        console.log(url, "url");
+      })
+      .catch((e) => {
+        console.error(e.error);
+      });
+  };
+
   return (
     <div>
       <h1 className="mt-4 text-center">
         Explore Your Next Adventure: Tours & Treks Await!
       </h1>
+      <button onClick={handlepayment}>Buy now</button>
       <div className="flex flex-wrap justify-center">
         {currentExpeditions.map((content, index) => (
           <div
