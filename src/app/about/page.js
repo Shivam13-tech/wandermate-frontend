@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 
 export default function About() {
@@ -5,8 +6,9 @@ export default function About() {
     <div>
       <div className="flex flex-col md:flex-row justify-evenly align-center mt-14">
         <div>
-          <h1 className="text-center">About</h1>
-          <p className="text-center">Wandermate</p>
+          <h1 className="text-center text-2xl md:text-4xl">About</h1>
+          <br className="hidden md:block" />
+          <p className="text-center text-4xl md:text-6xl mb-4">Wandermate</p>
         </div>
         <div>
           <p className="w-[90vw] mb-2 text-start mx-auto md:w-[50vw]">
@@ -24,17 +26,15 @@ export default function About() {
           </p>
         </div>
       </div>
-      <div className="w-[90vw] mx-auto my-6">
-        <img
-          style={{ width: "100%", height: "100%" }}
-          src="/Images/about.jpg"
-          alt="about"
-        />
+      <div className="flex flex-col w-[60vw] md:flex-row md:w-[15vw] mx-auto my-6">
+        <img src="/Images/login-boy.png" alt="about1" />
+        <img src="/Images/auth-bg.png" alt="about2" />
       </div>
       <div className="flex flex-col md:flex-row justify-evenly align-center mt-4 mb-10">
         <div>
-          <h1 className="text-center">Why</h1>
-          <p className="text-center">Wandermate</p>
+          <h1 className="text-center text-2xl md:text-4xl">Why</h1>
+          <br className="hidden md:block" />
+          <p className="text-center text-4xl md:text-6xl mb-4">Wandermate</p>
         </div>
         <div>
           <p className="w-[90vw] mb-2 text-start mx-auto md:w-[50vw] ">
