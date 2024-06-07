@@ -10,25 +10,37 @@ export default function Navbar() {
     setDropdownOpen(!isDropdownOpen);
   };
   return (
-    <div className="bg-white w-[92vw] mx-[4vw] h-[5vh] mt-[2vh] rounded-md shadow-md flex justify-evenly items-center">
+    <div className="bg-white w-[92vw] mx-[4vw] h-[5vh] mt-[4vh] flex justify-evenly items-center">
       <div className="hidden md:flex">
         <h1>Wandermate</h1>
       </div>
       <div className="hidden md:flex">
-        <Link className="px-[3vw]" href="/">
+        <Link
+          className="px-[3vw] hover:cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out"
+          href="/"
+        >
           Home
         </Link>
-        <Link className="px-[3vw] hover:cursor-pointer" href="/about">
+        <Link
+          className="px-[3vw] hover:cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out"
+          href="/about"
+        >
           About
         </Link>
-        <Link className="px-[3vw] hover:cursor-pointer" href="/tour">
+        <Link
+          className="px-[3vw] hover:cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out"
+          href="/tour"
+        >
           Tour
         </Link>
-        <Link className="px-[3vw] hover:cursor-pointer" href="/booking">
+        <Link
+          className="px-[3vw] hover:cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out"
+          href="/booking"
+        >
           Booking
         </Link>
       </div>
-      <div className="hidden md:flex">
+      <div className="hidden md:flex hover:cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out">
         <Link href="/Join">Join us</Link>
       </div>
       <div className="md:hidden">

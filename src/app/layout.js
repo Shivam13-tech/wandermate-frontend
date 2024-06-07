@@ -17,6 +17,10 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
+        <div className="border bg-gray-20 w-[90vw] mx-auto my-4" />
+        <p className="regular-14 w-full text-center text-gray-30">
+          2024 All rights reserved
+        </p>
       </body>
     </html>
   );

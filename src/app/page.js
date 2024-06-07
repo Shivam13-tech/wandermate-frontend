@@ -60,109 +60,33 @@ export default function Home() {
           <img src="/Images/Group.jpeg" alt="group" />
         </div>
       </div>
-      {/*  <div>
-        <div>
-          <h1>Our features</h1>
-          <Image width={350} height={70} src="/Images/about.jpg" alt="about" />
+      <div className="flex flex-col justify-center items-center mt-12">
+        <div className="flex flex-col md:flex-row justify-center mt-4">
+          <div className="w-[90vw] md:w-[20vw] mx-2 my-2 ">
+            <img src="/Images/travel1.jpg" alt="travel1" />
+          </div>
+          <div className="w-[90vw] md:w-[20vw] mx-2 my-2 ">
+            <img src="/Images/travel2.jpg" alt="travel2" />
+          </div>
+          <div className="w-[90vw] md:w-[20vw] mx-2 my-2 ">
+            <img src="/Images/about.jpg" alt="travel3" />
+          </div>
+        </div>
+        <div className="hidden flex-col md:flex-row md:flex justify-center mt-2 ">
+          <div className="w-[90vw] md:w-[20vw] mx-2 my-2 ">
+            <img src="/Images/travel3.jpg" alt="travel4" />
+          </div>
+          <div className="w-[90vw] md:w-[20vw] mx-2 my-2 ">
+            <img src="/Images/travel5.jpg" alt="travel5" />
+          </div>
+          <div className="w-[90vw] md:w-[20vw] mx-2 my-2 ">
+            <img src="/Images/travel6.jpg" alt="travel6" />
+          </div>
         </div>
         <div>
-          <div>
-            <div>
-              <Image
-                width={350}
-                height={70}
-                src="/Images/about.jpg"
-                alt="about"
-              />
-              <h1>Our features</h1>
-            </div>
-            <div>
-              <Image
-                width={350}
-                height={70}
-                src="/Images/about.jpg"
-                alt="about"
-              />
-              <h1>Our features</h1>
-            </div>
-          </div>
-          <div>
-            <div>
-              <Image
-                width={350}
-                height={70}
-                src="/Images/about.jpg"
-                alt="about"
-              />
-              <h1>Our features</h1>
-            </div>
-            <div>
-              <Image
-                width={350}
-                height={70}
-                src="/Images/about.jpg"
-                alt="about"
-              />
-              <h1>Our features</h1>
-            </div>
-          </div>
+          <button className="my-2 mx-auto">More Destinations</button>
         </div>
-        <div className="flex flex-col justify-center ">
-          <div className="flex justify-center mt-4">
-            <div className="mx-2 my-2">
-              <Image
-                width={350}
-                height={70}
-                src="/Images/about.jpg"
-                alt="about"
-              />
-            </div>
-            <div className="mx-2 my-2">
-              <Image
-                width={350}
-                height={70}
-                src="/Images/about.jpg"
-                alt="about"
-              />
-            </div>
-            <div className="mx-2 my-2">
-              <Image
-                width={350}
-                height={70}
-                src="/Images/about.jpg"
-                alt="about"
-              />
-            </div>
-          </div>
-          <div className="flex justify-center mt-2">
-            <div className="mx-2 my-2">
-              <Image
-                width={350}
-                height={70}
-                src="/Images/about.jpg"
-                alt="about"
-              />
-            </div>
-            <div className="mx-2 my-2">
-              <Image
-                width={350}
-                height={70}
-                src="/Images/about.jpg"
-                alt="about"
-              />
-            </div>
-            <div className="mx-2 my-2">
-              <Image
-                width={350}
-                height={70}
-                src="/Images/about.jpg"
-                alt="about"
-              />
-            </div>
-          </div>
-          <button className="my-2">More Destinations</button>
-        </div>
-      </div> */}
+      </div>
     </div>
   );
 }
