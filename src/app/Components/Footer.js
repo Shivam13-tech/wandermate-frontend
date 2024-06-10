@@ -8,8 +8,8 @@ export default function Footer() {
         <p>Image logo will come</p>
         <h1>Wandermate</h1>
       </div>
-      <div className="hidden md:flex flex-col my-4 md:my-0">
-        <Link className="px-[3vw] my-2" href="/">
+      <div className="hidden lg:flex flex-col my-4 md:my-0">
+        <Link className="px-[3vw] my-2 " href="/">
           Home
         </Link>
         <Link className="px-[3vw] my-2 hover:cursor-pointer " href="/about">

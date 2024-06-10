@@ -1,111 +1,112 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+// import {
+//   Pagination,
+//   PaginationContent,
+//   PaginationEllipsis,
+//   PaginationItem,
+//   PaginationLink,
+//   PaginationNext,
+//   PaginationPrevious,
+// } from "@/components/ui/pagination";
 
 export default function Tour() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [showContent, setShowContent] = useState({});
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(8); // Number of items per page
+  // const [currentIndex, setCurrentIndex] = useState(0);
+  // const [showContent, setShowContent] = useState({});
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [postsPerPage] = useState(8); // Number of items per page
 
-  const images = [
-    "/Images/1.png",
-    "/Images/2.png",
-    "/Images/3.png",
-    "/Images/4.png",
-  ];
+  // const images = [
+  //   "/Images/1.png",
+  //   "/Images/2.png",
+  //   "/Images/3.png",
+  //   "/Images/4.png",
+  // ];
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
+  // const nextSlide = () => {
+  //   setCurrentIndex((prevIndex) =>
+  //     prevIndex === images.length - 1 ? 0 : prevIndex + 1
+  //   );
+  // };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
+  // const prevSlide = () => {
+  //   setCurrentIndex((prevIndex) =>
+  //     prevIndex === 0 ? images.length - 1 : prevIndex - 1
+  //   );
+  // };
 
-  const toggleVisibility = (index) => {
-    setShowContent((prevState) => ({
-      ...prevState,
-      [index]: !prevState[index],
-    }));
-  };
+  // const toggleVisibility = (index) => {
+  //   setShowContent((prevState) => ({
+  //     ...prevState,
+  //     [index]: !prevState[index],
+  //   }));
+  // };
 
-  const trekkingExpeditions = [
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-    "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  ];
+  // const trekkingExpeditions = [
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
+  // ];
 
-  const totalPosts = trekkingExpeditions.length;
-  const totalPages = Math.ceil(totalPosts / postsPerPage);
+  // const totalPosts = trekkingExpeditions.length;
+  // const totalPages = Math.ceil(totalPosts / postsPerPage);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentExpeditions = trekkingExpeditions.slice(
-    indexOfFirstPost,
-    indexOfLastPost
-  );
+  // const indexOfLastPost = currentPage * postsPerPage;
+  // const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  // const currentExpeditions = trekkingExpeditions.slice(
+  //   indexOfFirstPost,
+  //   indexOfLastPost
+  // );
 
-  const handlepayment = () => {
-    fetch("http://127.0.0.1:8080/api/payment/createcheckout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        items: [
-          { id: 1, quantity: 3 },
-          { id: 2, quantity: 1 },
-        ],
-      }),
-    })
-      .then((res) => {
-        if (res.ok) return res.json();
-        return res.json().then((json) => Promise.reject(json));
-      })
-      .then(({ url }) => {
-        window.location = url;
-        console.log(url, "url");
-      })
-      .catch((e) => {
-        console.error(e.error);
-      });
-  };
+  // const handlepayment = () => {
+  //   fetch("http://127.0.0.1:8080/api/payment/createcheckout", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       items: [
+  //         { id: 1, quantity: 3 },
+  //         { id: 2, quantity: 1 },
+  //       ],
+  //     }),
+  //   })
+  //     .then((res) => {
+  //       if (res.ok) return res.json();
+  //       return res.json().then((json) => Promise.reject(json));
+  //     })
+  //     .then(({ url }) => {
+  //       window.location = url;
+  //       console.log(url, "url");
+  //     })
+  //     .catch((e) => {
+  //       console.error(e.error);
+  //     });
+  // };
 
   return (
     <div>
-      <h1 className="mt-4 text-center">
+      <h1>Tour</h1>
+      {/* <h1 className="mt-4 text-center">
         Explore Your Next Adventure: Tours & Treks Await!
       </h1>
       <button onClick={handlepayment}>Buy now</button>
@@ -173,7 +174,7 @@ export default function Tour() {
           </div>
         ))}
       </div>
-      {/* Pagination */}
+      
       <div className="my-2">
         <Pagination>
           <PaginationContent>
@@ -205,7 +206,7 @@ export default function Tour() {
             </PaginationItem>
           </PaginationContent>
         </Pagination>
-      </div>
+      </div> */}
     </div>
   );
 }
