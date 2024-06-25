@@ -2,8 +2,10 @@
 import { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Join() {
+  const router = useRouter();
   const [isLoginView, setLoginView] = useState(true);
   const [selectedGender, setSelectedGender] = useState(null);
   const [formData, setFormData] = useState({
@@ -46,17 +48,22 @@ export default function Join() {
         }
         try {
           const response = await axios.post(
-            "https://wandermate-backend.onrender.com/api/login",
+            // "https://wandermate-backend.onrender.com/api/login",
+            "http://127.0.0.1:8080/api/auth/login",
             {
               email: formData.email,
               password: formData.password,
             }
           );
           console.log(response, "response");
+          localStorage.setItem("token", response.data.Token);
+          localStorage.setItem("name", response.data.Result.name);
+          localStorage.setItem("email", response.data.Result.email);
           showMessage("Login successful", "green");
+          router.replace("/profile");
         } catch (error) {
-          console.error("Error:", error);
-          showMessage(`${response.response.data.message}`, "red");
+          console.error("Error:", error.response.data.message);
+          showMessage(error.response.data.message, "red");
         }
       } else {
         if (
@@ -71,7 +78,8 @@ export default function Join() {
         }
         try {
           const response = await axios.post(
-            "https://wandermate-backend.onrender.com/api/signup",
+            // "https://wandermate-backend.onrender.com/api/signup",
+            "http://127.0.0.1:8080/api/auth/signup",
             {
               name: formData.name,
               email: formData.email,
@@ -82,6 +90,7 @@ export default function Join() {
           );
           console.log(response);
           showMessage("Signup successful", "green");
+          router.replace("/profile");
         } catch (error) {
           console.log(error.response.data.message, "error");
           const { errors } = error.response.data.message;
