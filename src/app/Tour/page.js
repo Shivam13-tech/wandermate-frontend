@@ -1,212 +1,168 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Image from "next/image";
-// import {
-//   Pagination,
-//   PaginationContent,
-//   PaginationEllipsis,
-//   PaginationItem,
-//   PaginationLink,
-//   PaginationNext,
-//   PaginationPrevious,
-// } from "@/components/ui/pagination";
 
 export default function Tour() {
-  // const [currentIndex, setCurrentIndex] = useState(0);
-  // const [showContent, setShowContent] = useState({});
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [postsPerPage] = useState(8); // Number of items per page
+  const [tourData, setTourData] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState({});
+  const [showContent, setShowContent] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(8); // Number of items per page
+  useEffect(() => {
+    const fetchTourData = async () => {
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:8080/api/user/getalltour"
+        );
+        console.log(response.data);
+        setTourData(response.data.Result);
+        const initialIndexes = {};
+        response.data.Result.forEach((tour) => {
+          initialIndexes[tour._id] = 0;
+        });
+        setCurrentIndex(initialIndexes);
+      } catch (error) {
+        console.error("Failed to fetch tours:", error);
+      }
+    };
 
-  // const images = [
-  //   "/Images/1.png",
-  //   "/Images/2.png",
-  //   "/Images/3.png",
-  //   "/Images/4.png",
-  // ];
+    fetchTourData();
 
-  // const nextSlide = () => {
-  //   setCurrentIndex((prevIndex) =>
-  //     prevIndex === images.length - 1 ? 0 : prevIndex + 1
-  //   );
-  // };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  // const prevSlide = () => {
-  //   setCurrentIndex((prevIndex) =>
-  //     prevIndex === 0 ? images.length - 1 : prevIndex - 1
-  //   );
-  // };
+  const nextSlide = (tourId) => {
+    setCurrentIndex((prevIndex) => {
+      const imagesLength = tourData.find((tour) => tour._id === tourId).images
+        .length;
+      return {
+        ...prevIndex,
+        [tourId]:
+          prevIndex[tourId] === imagesLength - 1 ? 0 : prevIndex[tourId] + 1,
+      };
+    });
+  };
 
-  // const toggleVisibility = (index) => {
-  //   setShowContent((prevState) => ({
-  //     ...prevState,
-  //     [index]: !prevState[index],
-  //   }));
-  // };
+  const prevSlide = (tourId) => {
+    setCurrentIndex((prevIndex) => {
+      const imagesLength = tourData.find((tour) => tour._id === tourId).images
+        .length;
+      return {
+        ...prevIndex,
+        [tourId]:
+          prevIndex[tourId] === 0 ? imagesLength - 1 : prevIndex[tourId] - 1,
+      };
+    });
+  };
 
-  // const trekkingExpeditions = [
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  //   "Embark on a journey through the untamed beauty of the Himalayas with our exhilarating trekking expedition. This unforgettable adventure begins at the base of towering peaks, where you will find yourself surrounded by lush forests, cascading waterfalls, and breathtaking vistas at every turn.",
-  // ];
+  const totalPosts = tourData.length;
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
 
-  // const totalPosts = trekkingExpeditions.length;
-  // const totalPages = Math.ceil(totalPosts / postsPerPage);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentExpeditions = tourData.slice(indexOfFirstPost, indexOfLastPost);
 
-  // const indexOfLastPost = currentPage * postsPerPage;
-  // const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  // const currentExpeditions = trekkingExpeditions.slice(
-  //   indexOfFirstPost,
-  //   indexOfLastPost
-  // );
+  const [userId, setUSERID] = useState("");
 
-  // const handlepayment = () => {
-  //   fetch("http://127.0.0.1:8080/api/payment/createcheckout", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       items: [
-  //         { id: 1, quantity: 3 },
-  //         { id: 2, quantity: 1 },
-  //       ],
-  //     }),
-  //   })
-  //     .then((res) => {
-  //       if (res.ok) return res.json();
-  //       return res.json().then((json) => Promise.reject(json));
-  //     })
-  //     .then(({ url }) => {
-  //       window.location = url;
-  //       console.log(url, "url");
-  //     })
-  //     .catch((e) => {
-  //       console.error(e.error);
-  //     });
-  // };
+  useEffect(() => {
+    const uservalue = localStorage.getItem("userId");
+    if (uservalue) {
+      setUSERID(uservalue);
+    }
+  }, []);
+
+  const handlepayment = (tourId) => {
+    fetch("http://127.0.0.1:8080/api/payment/createcheckout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: userId,
+        tourId: tourId,
+        items: [{ id: tourId, quantity: 1 }],
+      }),
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
+        return res.json().then((json) => Promise.reject(json));
+      })
+      .then(({ url }) => {
+        window.location = url;
+        console.log(url, "url");
+      })
+      .catch((e) => {
+        console.error(e.error);
+      });
+  };
 
   return (
     <div>
-      <h1>Tour</h1>
-      {/* <h1 className="mt-4 text-center">
+      <h1 className="my-4 text-center italic">
         Explore Your Next Adventure: Tours & Treks Await!
       </h1>
-      <button onClick={handlepayment}>Buy now</button>
+      {/* <button onClick={handlepayment}>Buy now</button> */}
       <div className="flex flex-wrap justify-center">
-        {currentExpeditions.map((content, index) => (
+        {currentExpeditions.map((tour, index) => (
           <div
             key={index}
             className="w-96 border border-gray-400 rounded mx-2 my-2"
           >
             <div className="flex items-center justify-center">
-              <button onClick={prevSlide} className="text-white rounded-l">
-                <Image
-                  width={250}
-                  height={70}
+              <button
+                onClick={() => prevSlide(tour._id)}
+                className="text-white rounded-l"
+              >
+                <img
+                  className="w-[4vw] h-[3vh] md:w-[3vw] md:h-[4vh] "
                   src="/Images/left-arrow.png"
                   alt="left-arrow"
                 />
               </button>
               <div className="overflow-hidden flex-shrink-0">
-                {images.map((image, idx) => (
-                  <Image
+                {tour.images.map((image, idx) => (
+                  <img
                     key={idx}
-                    width={250}
-                    height={70}
-                    src={image}
+                    src={`http://127.0.0.1:8080/public/images/${image}`}
                     alt={`Slide ${idx + 1}`}
-                    className={`w-full ${
-                      idx === currentIndex ? "" : "hidden"
+                    className={` md:w-[40vw] md:h-[20vh] lg:w-[14vw] lg:h-[23vh] ${
+                      idx === currentIndex[tour._id] ? "" : "hidden"
                     } rounded my-2`}
                   />
                 ))}
               </div>
-              <button onClick={nextSlide} className="text-white  rounded-r">
-                <Image
-                  width={250}
-                  height={70}
+              <button
+                onClick={() => nextSlide(tour._id)}
+                className="text-white  rounded-r"
+              >
+                <img
+                  className="w-[4vw] h-[3vh] md:w-[3vw] md:h-[4vh]"
                   src="/Images/right-arrow.png"
                   alt="right-arrow"
                 />
               </button>
             </div>
-            <h1>Tour name</h1>
-            <p className="mx-2 my-2">
-              {showContent[index] ? (
-                <>{content}</>
-              ) : (
-                <>
-                  {content.substring(0, 100)}{" "}
-                  {content.length > 100 && (
-                    <>
-                      {" "}
-                      <span
-                        style={{ cursor: "pointer", color: "blue" }}
-                        onClick={() => toggleVisibility(index)}
-                      >
-                        Read More
-                      </span>
-                    </>
-                  )}
-                </>
-              )}
-            </p>
-            <p>Price: 120$</p>
-            <button>Book now</button>
+            <div className="flex justify-between items-center px-4">
+              <h1>{tour.name}</h1>
+              <p>Price: {tour.price}</p>
+            </div>
+
+            <p className="mx-2 my-2">{tour.description}</p>
+            <div className="flex justify-center items-center">
+              <button
+                className="rounded bg-green-500 sm:w-[70vw] md:w-[45vw] lg:w-[15vw] sm:h-[5vh] md:h-[5vh] lg:h-[4vh] m-[1vh] text-background shadow-2xl"
+                onClick={() => handlepayment(tour._id)}
+              >
+                Book now
+              </button>
+            </div>
           </div>
         ))}
       </div>
-      
-      <div className="my-2">
-        <Pagination>
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious
-                onClick={() => paginate(currentPage - 1)}
-                disabled={currentPage === 1}
-              />
-            </PaginationItem>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-              (pageNumber) => (
-                <PaginationItem key={pageNumber}>
-                  <PaginationLink
-                    onClick={() => paginate(pageNumber)}
-                    style={{
-                      backgroundColor: currentPage === pageNumber ? "#ccc" : "",
-                    }}
-                  >
-                    {pageNumber}
-                  </PaginationLink>
-                </PaginationItem>
-              )
-            )}
-            <PaginationItem>
-              <PaginationNext
-                onClick={() => paginate(currentPage + 1)}
-                disabled={currentPage === totalPages}
-              />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-      </div> */}
     </div>
   );
 }

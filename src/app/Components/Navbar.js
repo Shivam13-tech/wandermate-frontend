@@ -11,7 +11,8 @@ export default function Navbar() {
   };
   return (
     <div className="bg-white w-[92vw] mx-[4vw] h-[5vh] mt-[4vh] flex justify-evenly items-center">
-      <div className="hidden md:flex">
+      <div className="hidden md:flex md:justify-center md:items-center">
+        <Image src="/Images/logo.jpg" width={100} height={100} alt="logo" />
         <h1>Wandermate</h1>
       </div>
       <div className="hidden md:flex">

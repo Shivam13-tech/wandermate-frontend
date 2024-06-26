@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -18,9 +19,6 @@ export default function Home() {
             the way. Our mission is to transform every journey into an exciting
             narrative of exploration, friendship, and discovery.
           </p>
-          <div className="flex justify-center items-center">
-            <button className="">See Destinations</button>
-          </div>
         </div>
         <div className="w-[90vw] md:w-[25vw]">
           <img src="/Images/map.png" alt="map" />
@@ -84,7 +82,13 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <button className="my-2 mx-auto">More Destinations</button>
+          {/* <button className="my-2 mx-auto">More Destinations</button> */}
+          <Link
+            className="px-[3vw] hover:cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out border border-gray-400 py-4 rounded hidden md:block"
+            href="/tour"
+          >
+            More Destinations
+          </Link>
         </div>
       </div>
     </div>

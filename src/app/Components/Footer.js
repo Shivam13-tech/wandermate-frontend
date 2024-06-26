@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <div className="mt-4 flex flex-col md:flex-row  p-14 md:justify-around justify-center items-center ">
       <div>
-        <p>Image logo will come</p>
+        <Image src="/Images/logo.jpg" width={100} height={100} alt="logo" />
         <h1>Wandermate</h1>
       </div>
       <div className="hidden lg:flex flex-col my-4 md:my-0">

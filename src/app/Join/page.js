@@ -59,6 +59,7 @@ export default function Join() {
           localStorage.setItem("token", response.data.Token);
           localStorage.setItem("name", response.data.Result.name);
           localStorage.setItem("email", response.data.Result.email);
+          localStorage.setItem("userId", response.data.Result._id);
           showMessage("Login successful", "green");
           router.replace("/profile");
         } catch (error) {
@@ -89,6 +90,10 @@ export default function Join() {
             }
           );
           console.log(response);
+          localStorage.setItem("token", response.data.Token);
+          localStorage.setItem("name", response.data.Result.name);
+          localStorage.setItem("email", response.data.Result.email);
+          localStorage.setItem("userId", response.data.Result._id);
           showMessage("Signup successful", "green");
           router.replace("/profile");
         } catch (error) {
