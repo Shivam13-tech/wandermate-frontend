@@ -76,6 +76,10 @@ export default function Tour() {
   }, []);
 
   const handlepayment = (tourId) => {
+    if (!userId) {
+      alert("Please login/signup before purchase");
+      return;
+    }
     fetch("http://127.0.0.1:8080/api/payment/createcheckout", {
       method: "POST",
       headers: {
