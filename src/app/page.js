@@ -85,7 +85,7 @@ export default function Home() {
           {/* <button className="my-2 mx-auto">More Destinations</button> */}
           <Link
             className="px-[3vw] hover:cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out border border-gray-400 py-4 rounded hidden md:block"
-            href="/tour"
+            href="/Tours"
           >
             More Destinations
           </Link>
