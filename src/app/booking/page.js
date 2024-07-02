@@ -25,7 +25,7 @@ export default function Booking() {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8080/api/auth/getuser/${userId}`
+          `https://wandermate-backend.onrender.com/api/auth/getuser/${userId}`
         );
         console.log(response);
         const boughtTours = response.data.user[0].boughtTours;
@@ -43,7 +43,9 @@ export default function Booking() {
   const fetchAllTours = async (tourIds) => {
     try {
       const tourPromises = tourIds.map((tourId) =>
-        axios.get(`http://127.0.0.1:8080/api/user/gettour/${tourId}`)
+        axios.get(
+          `https://wandermate-backend.onrender.com/api/user/gettour/${tourId}`
+        )
       );
       const tourResponses = await Promise.all(tourPromises);
       const tourData = tourResponses.map((response) => ({
@@ -123,7 +125,7 @@ export default function Booking() {
                   tour.images.map((image, idx) => (
                     <img
                       key={idx}
-                      src={`http://127.0.0.1:8080/public/images/${image}`}
+                      src={`https://wandermate-backend.onrender.com/public/images/${image}`}
                       alt={`Slide ${idx + 1}`}
                       className={`md:w-[40vw] md:h-[20vh] lg:w-[14vw] lg:h-[23vh] ${
                         idx === currentIndex[tour._id] ? "" : "hidden"

@@ -42,14 +42,15 @@ export default function Join() {
   const handleAuthAction = async () => {
     try {
       if (isLoginView) {
+        console.log("reached login auth");
         if (!formData.email || !formData.password) {
           showMessage("Please provide valid email & password", "red");
           return;
         }
         try {
           const response = await axios.post(
-            // "https://wandermate-backend.onrender.com/api/login",
-            "http://127.0.0.1:8080/api/auth/login",
+            "https://wandermate-backend.onrender.com/api/auth/login",
+            // "http://127.0.0.1:8080/api/auth/login",
             {
               email: formData.email,
               password: formData.password,
@@ -67,6 +68,7 @@ export default function Join() {
           showMessage(error.response.data.message, "red");
         }
       } else {
+        console.log("reached signup auth");
         if (
           !formData.email ||
           !formData.password ||
@@ -79,8 +81,8 @@ export default function Join() {
         }
         try {
           const response = await axios.post(
-            // "https://wandermate-backend.onrender.com/api/signup",
-            "http://127.0.0.1:8080/api/auth/signup",
+            "https://wandermate-backend.onrender.com/api/auth/signup",
+            // "http://127.0.0.1:8080/api/auth/signup",
             {
               name: formData.name,
               email: formData.email,
@@ -97,7 +99,7 @@ export default function Join() {
           showMessage("Signup successful", "green");
           router.replace("/profile");
         } catch (error) {
-          console.log(error.response.data.message, "error");
+          console.log(error, "error");
           const { errors } = error.response.data.message;
           Object.values(errors).forEach((error) => {
             showMessage(error.message, "red");

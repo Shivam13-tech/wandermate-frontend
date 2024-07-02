@@ -14,7 +14,7 @@ export default function Tour() {
     const fetchTourData = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8080/api/user/getalltour"
+          "https://wandermate-backend.onrender.com/api/user/getalltour"
         );
         console.log(response.data);
         setTourData(response.data.Result);
@@ -80,17 +80,20 @@ export default function Tour() {
       alert("Please login/signup before purchase");
       return;
     }
-    fetch("http://127.0.0.1:8080/api/payment/createcheckout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userId: userId,
-        tourId: tourId,
-        items: [{ id: tourId, quantity: 1 }],
-      }),
-    })
+    fetch(
+      "https://wandermate-backend.onrender.com/api/payment/createcheckout",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: userId,
+          tourId: tourId,
+          items: [{ id: tourId, quantity: 1 }],
+        }),
+      }
+    )
       .then((res) => {
         if (res.ok) return res.json();
         return res.json().then((json) => Promise.reject(json));
@@ -131,7 +134,7 @@ export default function Tour() {
                 {tour.images.map((image, idx) => (
                   <img
                     key={idx}
-                    src={`http://127.0.0.1:8080/public/images/${image}`}
+                    src={`https://wandermate-backend.onrender.com/public/images/${image}`}
                     alt={`Slide ${idx + 1}`}
                     className={` md:w-[40vw] md:h-[20vh] lg:w-[14vw] lg:h-[23vh] ${
                       idx === currentIndex[tour._id] ? "" : "hidden"
