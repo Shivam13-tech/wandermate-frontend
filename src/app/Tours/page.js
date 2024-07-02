@@ -75,37 +75,70 @@ export default function Tour() {
     }
   }, []);
 
-  const handlepayment = (tourId) => {
+  const handlepayment = async (tourId) => {
     if (!userId) {
       alert("Please login/signup before purchase");
       return;
     }
-    fetch(
-      "https://wandermate-backend.onrender.com/api/payment/createcheckout",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+
+    try {
+      const response = await axios.post(
+        "https://wandermate-backend.onrender.com/api/payment/createcheckout",
+        {
           userId: userId,
           tourId: tourId,
           items: [{ id: tourId, quantity: 1 }],
-        }),
-      }
-    )
-      .then((res) => {
-        if (res.ok) return res.json();
-        return res.json().then((json) => Promise.reject(json));
-      })
-      .then(({ url }) => {
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        const { url } = response.data;
         window.location = url;
         console.log(url, "url");
-      })
-      .catch((e) => {
-        console.error(e.error);
-      });
+      } else {
+        console.error("Failed to create checkout:", response.data);
+      }
+    } catch (error) {
+      console.error("Error during payment process:", error);
+    }
   };
+
+  // const handlepayment = (tourId) => {
+  //   if (!userId) {
+  //     alert("Please login/signup before purchase");
+  //     return;
+  //   }
+  //   fetch(
+  //     "https://wandermate-backend.onrender.com/api/payment/createcheckout",
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         userId: userId,
+  //         tourId: tourId,
+  //         items: [{ id: tourId, quantity: 1 }],
+  //       }),
+  //     }
+  //   )
+  //     .then((res) => {
+  //       if (res.ok) return res.json();
+  //       return res.json().then((json) => Promise.reject(json));
+  //     })
+  //     .then(({ url }) => {
+  //       window.location = url;
+  //       console.log(url, "url");
+  //     })
+  //     .catch((e) => {
+  //       console.error(e.error);
+  //     });
+  // };
 
   return (
     <div>
