@@ -30,9 +30,9 @@ export default function Navbar() {
         </Link>
         <Link
           className="px-[3vw] hover:cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out"
-          href="/tour"
+          href="/Tours"
         >
-          Tour
+          Tours
         </Link>
         <Link
           className="px-[3vw] hover:cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out"
