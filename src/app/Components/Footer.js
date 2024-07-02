@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <div className="mt-4 flex flex-col md:flex-row  p-14 md:justify-around justify-center items-center ">
       <div>
-        <Image src="/Images/logo.jpg" width={100} height={100} alt="logo" />
+        <Image src="/Images/Logo.jpg" width={100} height={100} alt="logo" />
         <h1>Wandermate</h1>
       </div>
       <div className="hidden lg:flex flex-col my-4 md:my-0">
@@ -15,8 +15,8 @@ export default function Footer() {
         <Link className="px-[3vw] my-2 hover:cursor-pointer " href="/about">
           About
         </Link>
-        <Link className="px-[3vw] my-2 hover:cursor-pointer " href="/tour">
-          Tour
+        <Link className="px-[3vw] my-2 hover:cursor-pointer " href="/Tours">
+          Tours
         </Link>
         <Link className="px-[3vw] my-2 hover:cursor-pointer " href="/booking">
           Booking
